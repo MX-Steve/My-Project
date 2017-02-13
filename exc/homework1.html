@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			"use strict";//启用严格模式
+			//声明一个直接量对象
+			var emp1={id:1001,name:"Steve",salary:10000};
+			//获取emp1的id特性
+			var id_attrs=Object.getOwnPropertyDescriptor(emp1,"id");
+			console.dir(id_attrs);
+			//让emp1的id属性只读：设置id的writable为false
+			/*Object.defineProperty(emp1,"id",{
+				writable:false,
+				configurable:false,
+			});
+			*/
+			Object.defineProperties(emp1,{
+				id:{writable:false,configurable:false},
+				name:{configurable:false},
+				salary:{enumerable:false,configurable:false}
+			});
+			//emp1.id=002;
+			//delete emp1.id;
+			//delete emp1.name;
+			for(var key in emp1){
+				console.log(key+" : "+emp1[key]);
+			}
+			console.dir(emp1);
+			console.dir(emp1.salary);
+		</script>
+	</body>
+</html>
