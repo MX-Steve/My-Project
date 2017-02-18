@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function fun(){return 1;};
+			function fun(){return 2;};
+			var fun;
+			console.log(fun());
+			console.log(fun());
+			fun=100;
+			//console.log(fun());
+			//overload
+			var checkout=function(){
+				if(arguments.length==0){
+					console.log("微信");
+				}else if(arguments.length==1){
+					console.log("现金");
+				}else{
+					console.log("刷卡");
+				}
+			}
+			checkout();
+			checkout(120);
+			checkout("123",123);
+			//用arguments求和
+			function add(){
+				for(var i=0,sum=0;i<arguments.length;sum+=arguments[i++]);
+				return sum;
+			}
+			console.log(add(1,2,3,4),add(1,2,3,4,5));
+			//验证码
+			var chars=[];
+			for(var i=48;i<=57;chars.push(String.fromCharCode(i++)));
+			for(var i=65;i<=90;chars.push(String.fromCharCode(i++)));
+			for(var i=97;i<=122;chars.push(String.fromCharCode(i++)));
+			console.log(String(chars));
+			function getCode(){
+				var code="";
+				while(code.length<4){
+					var r=Math.floor(Math.random()*chars.length);
+					code+=chars[r];
+				}
+				return code;
+			}
+			var code=getCode();
+			while((prompt("请输入验证码"+code)).toLowerCase()!==code.toLowerCase()){
+				alert("输入有误，重输入");
+				code=getCode();
+
+			}
+			document.write("验证通过");
+			console.log(getCode());
+		
+		</script>
+	</body>
+</html>

@@ -7,6 +7,7 @@
 	<body>
 		<script>
 			//错误处理练习
+			/*
 			var n=parseFloat(prompt("输入小数"));
 			var d=prompt("输入保留位数");
 			if(d>=0&&d<=20){
@@ -16,6 +17,19 @@
 			}
 			n=null; d=null;
 			alert("释放");
+			//判断是否支持Ajax
+			try{
+				new XMLHttpRequest();
+				document.write("支持");
+			}catch(err){
+				document.write("不支持");
+			}*/
+			//判断是否支持Ajax 法2
+			if(window.XMLHttpRequest){//不要加圆括号
+				document.write("支持");
+			}else{
+				document.write("不支持"); 
+			}
 		</script>
 	</body>
 </html>
