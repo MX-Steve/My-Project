@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//错误处理练习
+			var n=parseFloat(prompt("输入小数"));
+			var d=prompt("输入保留位数");
+			if(d>=0&&d<=20){
+				alert(n.toFixed(d));
+			}else{
+				alert("小数位数必须在0-20之间");
+			}
+			n=null; d=null;
+			alert("释放");
+		</script>
+	</body>
+</html>
