@@ -16,6 +16,17 @@
 			console.log(funs[0]());
 			console.log(funs[1]());
 			console.log(funs[2]());
+			//汇率
+			function factory(rate){
+				return function(money){
+					return (money*rate).toFixed(2);
+				}
+			}
+			var rmb2$=factory(0.1639);
+			console.log(rmb2$(1000),rmb2$(2000));
+			var rmb2o=factory(0.1439);
+			console.log(rmb2o(1000),rmb2o(2000));
+
 		</script>
 	</body>
 </html>

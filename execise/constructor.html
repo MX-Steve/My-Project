@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/*
+			var lilei={
+				name:"Li Lei",
+				age:11,
+				intr:function(){
+					console.log("i am "+this.name+",i am"+this.age);
+				}
+			}
+			lilei.intr();
+			lilei.age++;
+			console.dir(lilei);
+		*/
+		//定义构造函数
+		function Student(name,age){
+			this.name=name;
+			this.age=age;
+			this.intr=function(){
+				console.log("i am "+this.name+", i am "+this.age);
+			}
+		}
+		//用new调用构造函数
+		var lilei=new Student("LI Lei",11);
+		var hmm=new Student("Han Meimei",12);
+		lilei.intr();
+		hmm.intr();
+		</script>
+	</body>
+</html>
