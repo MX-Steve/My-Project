@@ -1,0 +1,71 @@
+/*	var adv={
+	DISTANCE:0,DURATION:2000,
+	STEPS:400,
+timer:null,
+	div:null,
+	step:0,interval:0,moved:0,
+	WAIT:5000,
+	init(){
+		this.div=document.getElementById("msg");
+		this.DISTANCE=parseFloat(getComputedStyle(this.div).height);
+		this.interval=this.DURATION/this.STEPS;
+		this.step=this.DISTANCE/this.STEPS;
+		this.move(1);
+		this.div.children[0].onclick=function(){
+			if(this.timer==null)
+				this.move(-1);
+		}.bind(this);
+	},
+	move(dir){
+		this.timer=setInterval(this.moveStep.bind(this,dir),this.interval);
+	},
+	moveStep(dir){
+		var bottom=parseFloat(getComputedStyle(this.div).bottom);
+		bottom+=dir*this.step;
+		this.div.bottom.style=bottom+"px";
+		this.moved++;
+		if(this.moved==this.STEPS){
+			clearInterval(this.timer);
+			this.timer=null;this.moved=0;
+			if(dir==-1){
+				setTimeout(this.move.bind(this,1),this.WAIT);
+			}
+		}
+	}
+}
+adv.init();console.dir(adv);
+*/
+var adv={
+	DISTANCE:0,DURATION:2000,
+	STEPS:400,
+	interval:0,step:0,moved:0,
+	timer:null,div:null,WAIT:5000,
+	init(){
+		this.div=document.getElementById("msg");
+		this.DISTANCE=parseFloat(getComputedStyle(this.div).height);
+		this.interval=this.DURATION/this.STEPS;
+		this.step=this.DISTANCE/this.STEPS;
+		this.move(1);
+		this.div.children[0].onclick=function(){
+			if(this.timer==null)
+				this.move(-1);
+		}.bind(this);
+	},
+	move(dir){
+		this.timer=setInterval(this.moveStep.bind(this,dir),this.interval);
+	},
+	moveStep(dir){
+		var bottom=parseFloat(getComputedStyle(this.div).bottom);
+		bottom+=dir*this.step;
+		this.div.style.bottom=bottom+"px";
+		this.moved++;
+		if(this.moved==this.STEPS){
+			clearInterval(this.timer);
+			this.timer=null;this.moved=0;
+			if(dir==-1){
+				setTimeout(this.move.bind(this,1),this.WAIT);
+			}
+		}
+	}
+}
+adv.init();
