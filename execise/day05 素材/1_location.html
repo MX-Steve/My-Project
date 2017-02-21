@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>事件处理</title>
+<meta charset="utf-8" />
+
+</head>
+<body>
+ 	<form>
+		姓名:<input name="username"/>
+		密码:<input type="password" name="pwd"/>
+		<input type="submit"/>
+	</form>
+  <script>
+	/*
+		function parseSearch(){
+			if(location.search!=""){
+				var arr=location.search.slice(1).split("&");
+				for(var i=0,obj={};i<arr.length;i++){
+					var split=arr[i].split("=");
+					obj[split[0]]=split[1];
+				}
+				return obj;
+			}else return {};
+		}
+	
+		function parseSearch(){
+			if(location.search!=""){
+				var arr=location.search.slice(1).split("&");
+				for(var i=0,obj={};i<arr.length;i++){
+					var split=arr[i].split("=");
+					obj[split[0]]=split[1];
+				}
+				return obj;
+			}else return {};
+		}
+		var obj=parseSearch();
+		console.dir(obj);
+	*/
+	if(navigator.cookieEnabled)
+		document.write("cookie已启用，请妥善保管密码");
+	else
+		document.write("cookie已禁用，无法记住密码");
+	//检查是否安装插件
+	function checkPlugIn(pname){
+	return navigator.plugins[pname]!==undefined;
+	}
+	document.write(checkPlugIn("Chrome PDF Viewer"));
+	document.write(checkPlugIn("Shockware Flash"));
+
+	var ua=navigator.userAgent;
+	var browser="",version="";
+	//判断浏览器
+	if(ua.indexOf("MSIE")!=-1)
+		browser="IE";
+	else if(ua.indexOf("Firefox")!=-1)
+		browser="Firefox";
+	else if(ua.indexOf("OPR")!=-1)
+		browser="OPR";
+	else if(ua.indexOf("Chrome")!=-1)
+		browser="Chrome";
+	else if(ua.indexOf("Safari")!=-1)
+		browser="Safari";
+	document.write("<br>"+browser+"<br>");
+	//判断版本号
+	var i=ua.indexOf(browser);
+	i+=browser.length+1;
+	version=parseFloat(ua.slice(i,i+3));
+	document.write(version+"<br>");
+  </script>
+</body>
+</html>

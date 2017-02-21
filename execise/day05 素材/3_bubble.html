@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>事件处理</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="css/3.css"/>
+		
+	</head>
+	<body>
+		<div class="d1">
+			<div class="d2">
+				<div class="d3">
+				</div>
+			</div>
+		</div>
+    <script>
+		/*
+			function highLight(){
+				this.style.background="yellow";
+				alert(this.className);
+				this.style.background="";
+			}
+			var d1=document.querySelector(".d1");
+			d1.addEventListener("click",highLight);
+			var d2=document.querySelector(".d2");
+			d2.addEventListener("click",highLight);
+			var d3=document.querySelector(".d3");
+			d3.addEventListener("click",highLight);
+		*/
+
+			function heightLight(){
+				//设置当前div的背景颜色
+				this.style.background="yellow";
+				alert(this.className);
+				this.style.background="";
+			}
+			var d1=document.querySelector(".d1");
+			d1.addEventListener("click",heightLight);
+			var d2=document.querySelector(".d2");
+			d2.addEventListener("click",heightLight);
+			var d3=document.querySelector(".d3");
+			d3.addEventListener("click",heightLight);
+
+		</script>
+	</body>
+</html>
