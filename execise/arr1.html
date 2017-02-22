@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组排序</title>
+</head>
+<body>
+  <div>数组[2,5,7,2,4]</div>
+  <h3 class="h1">排序结果:</h3>
+  <div style="width:200px;height:200px;border:1px solid #ddd;" id="d1"></div>
+    <script>
+      function bubbleSort(arr){
+          for(var r=1;r<arr.length;r++){
+              for(var i=0;i<arr.length-r;i++){
+                  if(arr[i]<arr[i+1]){
+                      arr[i]+=arr[i+1];
+                      arr[i+1]=arr[i]-arr[i+1];
+                      arr[i]-=arr[i+1];
+                  }
+              }
+          }
+      }
+      var arr1=[2,5,7,2,4];
+      bubbleSort(arr1);
+      var d1=document.getElementById('d1');
+      d1.innerHTML=(arr1);
+    </script>
+</body>
+</html>
