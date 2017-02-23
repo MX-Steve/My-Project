@@ -24,6 +24,24 @@
       bubbleSort(arr1);
       var d1=document.getElementById('d1');
       d1.innerHTML=(arr1);
+			function factorial(num){
+				if(num<=1){
+					return 1;
+				}else{
+					return num*factorial(num-1);
+				}
+			}
+			console.log(factorial(5));
+			var name="the window";
+			var object={
+				name:"my obj",
+				getName:function(){
+					return function(){
+						return this.name;
+					}
+				}
+			};
+			alert(object.getName()());
     </script>
 </body>
 </html>

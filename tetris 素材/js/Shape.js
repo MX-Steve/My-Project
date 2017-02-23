@@ -1,57 +1,83 @@
-/*
-	专门描述格子和图片的数据结构和功能
-*/
-//定义Cell类型描述一个格子
+/**
+ * 专门描述格子和图形的数据结构和功能
+ */
+//定义Cell类型描述一个格子: r,c,src
 function Cell(r,c,src){
 	this.r=r; this.c=c; this.src=src;
 }
-/*
-function Cell(r,c,src){
-	this.r=r;this.c=c;this.src=src;
-}
-/
-/*定义所有图形的的公共父类型Shape
-		所有图形都有一个格子数组，包含四个格子
-		所有图片否可以下落左移，右移，旋转
- */
- function Shape(r0,c0,r1,c1,r2,c2,r3,c3,src,states,orgi){
+/*定义所有图形的公共父类型Shape:
+	    所有图形都有一个格子数组，包含四个格子
+      所有图形都可下落，左移，右移，旋转...
+*/
+function Shape(r0,c0,r1,c1,r2,c2,r3,c3,src,states,orgi){
 	this.cells=[
-		new Cell(r0,c0,src),
-		new Cell(r1,c1,src),
-		new Cell(r2,c2,src),
-		new Cell(r3,c3,src),
+		new Cell(r0,c0,src),	 new Cell(r1,c1,src),	
+		new Cell(r2,c2,src),	 new Cell(r3,c3,src),	
 	];
-	this.states=states;//保存状态
-	this.orgCell=this.cell[orgi];//根据下标获得参照格对象
-	this.statei=0;
- }
+	this.states=states;//保存图形的多个旋转状态
+	//根据参照格的下标，获得参照格对象
+	this.orgCell=this.cells[orgi];
+	this.statei=0;//保存图形所处的当前状态序号
+}
 Shape.prototype={//重定义Shape的原型对象
-	moveDown(){//图片下落
+	moveDown(){//图形下落: 
 		//遍历当前图形的cells中每个cell
 		for(var i=0;i<this.cells.length;i++)
-			this.cells[i].r++;
+			this.cells[i].r++;//当前cell的r+1
 	},
-	moveLeft(){
+	moveLeft(){//图形左移
+		//遍历当前图形的cells中每个cell
 		for(var i=0;i<this.cells.length;i++)
-			this.cells[i].c--;
+			this.cells[i].c--;	//当前cell的c-1
 	},
-	moveRight(){
+	moveRight(){//图形右移
+		//遍历当前图形的cells中每个cell
 		for(var i=0;i<this.cells.length;i++)
-		this.cells[i].c++;
+			this.cells[i].c++;	//当前cell的c+1
 	},
-	rotateR(){//顺时针
-		
+	rotateR(){//顺时针旋转
+		this.statei++;//将statei+1
+		//如果statei等于states的元素个数,就改回0
+		if(this.statei==this.states.length)
+			this.statei=0;
+		this.rotate();//旋转
 	},
-	rotateL(){//逆时针
-	
+	rotate(){
+		//获得state中statei位置的状态对象
+		var state=this.states[this.statei];
+		//遍历当前图形的cells中每个cell
+		for(var i=0;i<this.cells.length;i++){
+			var cell=this.cells[i];//临时保存cell
+			//如果cell不是orgCell
+			if(cell!=this.orgCell){
+				//       r0c0 r1c1  r2c2 r3c3
+				//state:{-1,0, 0,0, +1,0, 0,-1}
+				//i=0
+				//用orgCell的r加上state中对应位置的值，计算出cell的新r
+				cell.r=this.orgCell.r+state["r"+i];
+				//用orgCell的c加上state中对应位置的值，计算出cell的新c
+				cell.c=this.orgCell.c+state["c"+i];
+			}
+		}
 	},
+	rotateL(){//逆时针旋转
+		this.statei--;//将statei-1
+		//如果statei等于-1,就改回states的元素个数-1
+		if(this.statei==-1) 
+			this.statei=this.states.length-1;
+		this.rotate();//旋转
+	}
 }
-//旋转状态
-/*
-	为每种图形定义专门的类型
-		子类型的构造函数中借用shape构造函数，传入每个
-			格子的坐标和图片路径
-		子类型的原型要继承shape的原型
+//定义类型State,描述一种旋转状态: 
+function State(r0,c0,r1,c1,r2,c2,r3,c3){
+	this.r0=r0; this.c0=c0;
+	this.r1=r1; this.c1=c1;
+	this.r2=r2; this.c2=c2;
+	this.r3=r3; this.c3=c3;
+}
+/*为每种图形定义专门的类型:
+    子类型的构造函数中借用Shape构造函数，传入每个格子的坐标和图片路径
+		子类型的原型要继承Shape的原型
 */
 function T(){
 	Shape.call(this,
@@ -60,36 +86,29 @@ function T(){
 		[
 			new State(0,-1, 0,0, 0,+1, +1,0),
 			new State(-1,0, 0,0, +1,0, 0,-1),
-			new State(0,+1, 0,0, 0,-1, -1,0),
-			new State(+1,0, 0,0, -1,0, 0,+1)
+		  new State(0,+1, 0,0, 0,-1, -1,0),
+		  new State(+1,0, 0,0, -1,0, 0,+1)
 		],
 		1)
 }
 Object.setPrototypeOf(T.prototype,Shape.prototype);
 function I(){
-	Shape.call(this,0,3,0,4,0,5,0,6,"img/I.png",
+	Shape.call(this,
+		0,3,0,4,0,5,0,6,
+		"img/I.png",
 		[
 			new State(0,-1, 0,0, 0,+1, 0,+2),
-			new State(-1,0, 0,0, +1,0, +2,0)
-		]
-		,1)
+			new State(-1,0, 0,0, +1,0, +2,0),
+		],
+		1)
 }
 Object.setPrototypeOf(I.prototype,Shape.prototype);
 function O(){
-	Shape.call(this,0,4,0,5,1,4,1,5,"img/O.png",
+	Shape.call(this,
+		0,4,0,5,1,4,1,5,
+		"img/O.png",
 		[new State(0,-1, 0,0, +1,-1, +1,0)],
 		1)
 }
 Object.setPrototypeOf(O.prototype,Shape.prototype);
-function J(){
-	Shape.call(this,0,5,1,5,2,5,2,4,"img/J.png")
-}
-Object.setPrototypeOf(J.prototype,Shape.prototype);
-function L(){
-	Shape.call(this,0,5,1,5,2,5,2,6,"img/L.png")
-}
-Object.setPrototypeOf(L.prototype,Shape.prototype);
-function Z(){
-	Shape.call(this,0,4,0,5,1,5,1,6,"img/J.png")
-}
-Object.setPrototypeOf(Z.prototype,Shape.prototype);
+console.dir(new T());
