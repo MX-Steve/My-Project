@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8">
+	<style>
+		a{
+			text-decoration:none;
+			color:#000;
+			border:1px solid #000;
+			display:inline-block;
+			padding:6px 12px;
+			border-radius:6px;
+		}
+	</style>
+ </head>
+ <body>
+	<h1>jQuery事件处理——事件代理</h1>
+	<a href="#" id="a1">在parent中添加一个button新按钮</a>
+	<a href="#" id="a2">在parent中添加一个input新按钮</a>
+	<div id="parent">
+		<button>BTN1</button>
+		<button>BTN2</button>
+	</div>
+	<script src="js/jquery-1.11.3.js"></script>
+	<script>
+		var $parent=$("#parent");
+		var n=3,m=1;
+		$("#a1").click(function(){
+			$parent.append("<button>BTN"+n+"</button>");
+		});
+		$("#a2").click(function(){
+			$parent.append("<input type='button' value='INPUT"+ m++ +"'/>");
+		});
+		//$parent.delegate("button","click",function(){
+		$parent.on("click","button",function(){
+			alert($(this).html());
+		});
+		$parent.on("click","input",function(){
+			alert($(this).val());
+		});
+	</script>
+ </body>
+</html>
