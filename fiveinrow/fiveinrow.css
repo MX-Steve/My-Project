@@ -1,0 +1,99 @@
+/*通用样式-格式化*/
+html,body,h1,div,h2,h3,h4,h5,h6,table,tr,td,ul,ol,li,dl,dd,dt{
+	text-decoration:none;
+	margin:0;padding:0;
+	font-size:16px;
+	vertical-align:baseline;
+}
+.rt{float:right}
+.lf{float:left}
+/*棋盘外板*/
+#mywrapper{
+	width:542px;
+	height:540px;
+	box-sizing:border-box;
+	position:relative;
+	top:40px;
+	left:60px;
+	border:1px solid #E8E8E8;
+	box-shadow:5px 5px #CACACA;
+	background:#FAFAFA;
+}/*棋盘*/
+div.chessboard{
+	background:url(img/chessboard.png) no-repeat 0px 0px;	
+	/*margin:14px 45px;*/
+	box-sizing:border-box;
+	position:absolute;
+	top:13px;
+	left:13px;
+	width:542px;height:542px;
+	cursor:pointer;
+}
+/*隐藏格*/
+div[class^=line]{
+	float:left;
+	height:36px;
+	width:36px;
+	box-sizing:border-box;
+	position:relative;
+	z-index:10;
+}
+/*鼠标悬停*/
+div[class^=line]:hover{
+	background:url(img/hover.png) no-repeat;
+}
+div[class*=first]:hover{
+	background:url(img/hover_left.png) no-repeat;
+}
+div[class*=last]:hover{
+	background:url(img/hover_right.png) no-repeat;
+}
+div[class*=line01]:hover{
+	background:url(img/hover_up.png) no-repeat;
+}
+div[class*=line15]:hover{
+	background:url(img/hover_down.png) no-repeat;
+}
+div[class*=top-last]:hover{
+	background:url(img/hover_up_right.png) no-repeat;
+}
+div[class*=top-first]:hover{
+	background:url(img/hover_up_left.png) no-repeat;
+}
+div[class*=bottom-first]:hover{
+	background:url(img/hover_down_left.png) no-repeat;
+}
+div[class*=bottom-last]:hover{
+	background:url(img/hover_down_right.png) no-repeat;
+}
+/*百子黑子*/
+
+/*操作盘*/
+.operation-panel{
+	position:absolute;
+	left:610px;
+	top:150px;
+	width:200px;
+	height:300px;
+	text-align:center;
+	background-color:#ccc;
+	padding:30px 10px;
+}
+.operation-panel a{
+	text-decoration:none;
+	font-family:"微软雅黑";
+	font-size:16px;
+	font-weight:bold;
+	color:#333;
+	display:inline-block;
+	background:#64A7E9;
+	padding:10px 15px;
+	margin:10px 15px;
+}
+.operation-panel a:hover{
+	background:#3094F7;
+}
+.operation-panel a.selected{
+	border:5px solid #f3c242;
+	padding: 5px 10px
+}
