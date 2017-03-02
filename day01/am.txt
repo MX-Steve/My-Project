@@ -1,0 +1,192 @@
+今天学习的内容
+程涛 chengtao@tedu.cn
+1:整体课程
+2:ajax内容重点
+3:今日目标
+4:服务器与数据库服务器
+5:sql
+#----------------------
+1:整体课程
+  第一阶段: html(4)+css(5)=静态页面
+	第二阶段: js(7)+dom(7.5)=用户交互
+	第三阶段: ajax(9)+h5高级(6.5)=动态页面(全栈)
+  第四阶段: 框架
+2:ajax内容重点
+  数据库(mysql)     -- SQL:难点
+	web服务器(apache) -- php:重点
+  http协议          -- 抽象
+	原生ajax          -- 难点
+	jquery中ajax
+3:今日目标
+  3.1:服务器与数据库服务器 -- 了解
+	3.2:SQL                     重点&难点
+4:服务器与数据库服务器
+  4.1:什么是服务器
+	:能够在网络系统中提供各种服务的软件与硬件集合.
+  (网页传送,收发邮件,视频，语音)
+	硬件服务器:高性能硬件
+	-软件服务器:稳定高效服务(web/ftp/email/db..)
+  4.2:数据库服务器(软件)
+	作用:存储和管理数据软件产品
+	数据库可以解决其它软件不能解决的二个问题
+	a:海量(永久)数据存储
+	b:高速查询 （114）
+	4.3:数据服务服务器分类
+	-网状数据库
+	-树型数据库
+	-关系数据库----(Mysql**/Oracle/SqlServer/DB2)
+	 mysql 互联网软件系统标配(免费/入门简单/功能强)
+	-NOSQL Redis(内存储数据库 查询极快)
+	4.4:什么是关系型数据库
+	 以横行竖列的方式保存数据的数据库称为
+	 关系型数据库
+	 用户数据
+   编号   用户名 密码   年龄(字段 列)
+	 1      tom    123a   19  (记录 行)
+	 2      jerry  456    20
+	 3      james  789    21
+	 4      dong   123    25
+	 5      daxu   567    21
+   4.5:关系型数据库层次
+	 mysql数据库软件-->库(Database)->表(Table)
+	 ->行(Row)-->列(column)
+
+
+	 4.6 mysql安装使用
+   1:在官网下载mysql安装包(国内镜像站)
+	   http://www.oracle.com/cn/index.html
+		 http://mirrors.sohu.com
+	 2:xampp 软件工具包(apache/php/mysql)
+     https://apachefriends.org
+   3:服务器端:用于存储数据(先启动服务器)
+	   a:xampp控制面板->启动按钮{start} 
+		 启动程序: c:/xampp/mysql/bin/mysqld.exe
+		 数据目录: c:/xampp/mysql/data
+		 #注意:数据库服务通常不停止
+	 4:客户端:下载并安装一款mysql客户端软件
+	   --用于向服务器发出增删改查指令的
+		 c:/xampp/mysql/bin/mysql.exe
+		 mysql.exe -uroot -p
+	   
+    练习:10:25--10:30
+		反复启动mysql服务器,通过mysql
+		客户端进入mysql登录
+
+    #查询当前mysql中有多少个库可用
+    show databases;
+		#查询当前mysql编码方式
+		status;
+		#退出sql执行状态
+		exit;
+
+ 5:sql 语句
+   Structured Query Language:结构化查询语言
+	 专用于增删改查数据库服务器中数据的语言
+	 由于{数据库客户端)程序编写,提交数据库
+	 服务器来执行.
+   共有两有种提交方式
+	 1)交互模式--一行一行执行
+	   用户在客户端输入一行sql命令提交一行(回车)
+	 2)脚本模式--一次执行多行
+	   把要执行sql命令编写在一个.sql文件中,
+		 一次性全提提交给服务器软件
+		 a:打开mysql客户端 
+		 b:执行
+		   mysql -uroot -p < d:/jd.sql
+	   
+   练习:10:50--10:53
+	      10:53--11:03 休息
+	   1:创建脚本 
+		   d:/jd.sql
+		 2:添加sql语句在脚本中
+		   show databases;
+			 status;
+		 3:打开客户端执行下面指令
+		   mysql -uroot -p < d:/jd.sql
+     #出错误原因:上面指令不是sql语句
+		 #执行一行sql脚本,不是sql语句
+
+    5.1:SQL语句的分类
+		1:DDL     Data Define Language
+		  定义库定义{创建库/表/,删除库/表,修改表结构}
+			CREATE/DROP/ALTER/TRUNCATE
+		2:DML     Data Manipulate Language ***
+		  数据库操作语句
+			INSERT/DELETE/UPDATE
+			添加记录/删除记录/更新记录
+		3:DQL     Data Query Language      *****
+		  SELECT 查询语句
+		4:DCL     Data Control Language
+		  控制数据库用户的权限(数据库管理员)
+			GRANT/REVOKE
+
+
+    5.1.1: CREATE 创建库/创建表
+		#创建库语句
+		 CREATE DATABASE 库名;
+    示例:
+		 CREATE DATABASE web1612;
+		 CREATE DATABASE 我的数据库; error
+		专业级创建语句
+		 CREATE DATABASE 库名 CHARACTER SET utf8;
+     示例
+		 CREATE DATABASE web1612a CHARACTER SET utf8;
+    !!!!注意事项(BUG)
+		1:创建库创建表:库名 表名 列名
+		  不要用中文/不要加空格/不要加特殊字符
+			只能字母数字下划字
+    !!! MYSQL       编码utf8
+		     html/css/js 编码utf-8
+    如果当前mysql己经存在web1612库,还能再创建
+    
+    练习:11:23---11:26
+		1:创建二个库 web1612/web1612a
+		2:查询是否创建成功
+    #与创建库相关二条指令
+		1:show databases 查询当前mysql中多少库
+		2:use  库名;     进入指定库中;
+
+
+		#创建表
+     !语法
+		 CREATE TABLE 表名(
+		  列名称1 类型,
+			列名称2 类型,
+			列名称3 类型,
+			...
+			列名称n 类型
+		 );
+     !列类型
+		  int         整数类型  表示范围(-21亿~21亿)
+			varchar(n)  字符串    n字符个数
+			(数字，汉字,字母都称为一个字符)
+			datetime    日期时间  年月日时分秒
+			double(m,n) 浮点小数(一共m位长,
+			                    其中包含n位小数)
+			double(5,2); 999.99
+
+    示例:
+		CREATE TABLE t_user(
+		  id    int,
+			uname varchar(20),
+			pwd   varchar(32),
+			age   int
+		);
+		!!注意事项
+		1:一定先进入到某个库中再创建表
+		  use 库名;
+    2:表名/列名不要中文字格特殊字符
+		!!与创建表相关二条指令
+		 show tables;   查询当前库中所有表名
+		 desc 表名;     查询表结构
+    练习:11:53--12:03
+		 1:创建表  用户名/查询表是否存成功
+    
+		中午时间:
+		1:练习
+		  a:创建库 web1612b
+			b:进入库中
+			c:创建三张表
+			  雇员表(编号/姓名/工资/入职时间)
+				部门表(编号/名称)
+				产品表(编号/名称/图片/数量)

@@ -1,0 +1,21 @@
+mysql 使用二个常见错误
+
+1:ERROR 1044 (42000): Access denied 
+for user ''@'localhost'
+错误原因:权限不足(权限太低)
+解决:使用root登录mysql可以
+ 1:退出  exit
+ 2:重新登录
+    mysql -uroot -p
+ 3:再次执行指令 
+
+2:ERROR 1064 (42000): You have an 
+ error in your SQL syntax;
+错误原因:单词拼错了
+
+
+3:ERROR 1136 (21S01):
+Column count doesn't match
+value count at row 1
+错误原因:添加记录列数量不匹配(列数少或多)
+
