@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>搜索</h1>
+	<div>
+		搜索:<input type="text" name="book" id="book"><br />
+		<ul style="display:none;border:1px solid #ddd;width:300px;" id="suggest">
+		
+		</ul>
+	</div>
+	<script>
+		book.onkeyup=function(){
+			if(!book.value){
+				suggest.style.display="none";
+				return;
+			}
+			var url="book_search_do.php?book="+book.value;
+			var xhr=new XMLHttpRequest();
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState === 4 &&
+				xhr.status ===200){
+					suggest.style.display="block";
+					suggest.innerHTML=xhr.responseText;
+				}
+			}
+			xhr.open('GET',url,true);
+			xhr.send(null);
+		}
+	</script>
+</body>
+</html>

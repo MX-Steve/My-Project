@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="login_do.php" method="post">
+			姓名：<input type="text" name="uname" id="uname"><br />
+			密码：<input type="password" name="upwd" id="upwd"><br />
+			<input type="button" id="btn" value="提交">
+		</form>
+	</body>
+	<script>
+		btn.onclick = function(){
+			var url = "login_do.php?uname="+uname.value+"&upwd="+upwd.value;
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange=function(){
+				if(xhr.status == 200 &&
+				xhr.readyState == 4){
+					var mes = xhr.responseText;
+					if(mes ==="success"){
+						alert("登录成功");
+					}else{
+						alert("登录失败");
+					}
+				}
+			}
+			xhr.open("GET",url,true);
+			xhr.send(null);
+		}
+		/*
+		btn.onclick = funtion(){
+			var url="login_do.php?uname="+uname.value+"$upwd="+upwd.value;
+		}*/
+	</script>
+</html>
+
+
