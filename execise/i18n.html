@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>国际化</h1>
+	<script>
+		window.onload=function(){
+			var xhr =new XMLHttpRequest();
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState === 4 && xhr.status === 200){
+					eval(xhr.responseText);
+				}
+			}
+			xhr.open('POST', 'i18n.php',true);
+			xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+			xhr.send(null);
+		}
+	</script>
+</body>
+</html>
