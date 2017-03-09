@@ -1,0 +1,100 @@
+今天学习的内容
+1:复习总结复习重点
+2:解答问题
+3:ajax处理不同类型的数据
+  3.1 纯文本
+	3.2 文本与网页------>重点
+	3.3 javascript
+	3.4 xml
+	3.5 json------------->重点难点
+#-----------------------
+1:复习总结复习重点
+  1.1:http协议响应
+	     1XX  一共三位数字 1开头
+			      100 101 102 ...
+       2XX
+			 
+	1.2:响应的主体类型
+	    text/plain
+			text/html
+			application/javascript
+			text/css
+			....
+  header("content-type:text/html;charset=utf-8"); 
+	1.3:ajax
+	    异步的javascript and xml
+      XMLHttpRequest
+			作用:在无刷新无提交的情况下局部更新网页
+			(发起异步请求并接收返回数据)
+			属性:
+			readyState: 0 1 2 3 4 
+			status:     状态码 200 304 404 500
+			responseText 接收响应消息主体
+			responseXML  接收响应消息主体 
+			方法:
+			open(method,url,isAsyn);
+			send(null);      把请求消息发送给web
+      事件:
+			onreadystatechange
+  1.4:ajax 步骤
+	   a:创建对象
+		 b:绑定事件
+		   判断状态码 200 接收完成 4
+			 xhr.responseText
+		 c:open()
+		 d:send()
+		2:解答问题
+			 $sql = "set names utf8"; 
+	3:ajax处理不同类型的数据
+	
+			 3.1:*#用户登录 AJAX     9:30---9:40
+			 login.html   登录表单
+			 1:填写用户名密码
+			 2:点击提交按钮-->发送ajax请求
+				 并且接收返回值
+				 success
+					 1:提示:alert();
+					 2:自动跳转主程序 main.php
+				 error
+					 1:提示:alert();
+			 *login_do.php 处理表单程序
+			 1:获取表单数据 uname upwd
+			 2:查询数据库
+			 3:判断
+			 4:输出  success   登录成功 
+							 error     登录失败
+			 *main.php 
+			 欢迎进入系统页面
+
+		#如果ajax程序出错如何处理
+		bug.txt
+
+    3.2:使用xhr接收响应消息(不同类型)
+		 a:text/plain(纯文本字母数字汉字)
+      服务器:#最后几行
+			 header("content-type:text/plain;charset=utf-8");
+			 echo "success";
+			客户端:
+			 xhr.responseText;
+		 b:text/html(html片段,不是完整DOM树)
+		  服务器:#最后几行
+			 header("content-type:text/html;charset=utf-8");
+			 echo "<li>css指南</li><li>js大全</li>";
+		  客户端:
+			 xhr.responseText;
+
+      示例:搜索建议
+			1:编写sql 库 dangdang/t_book
+			2:添加20行   11:35--11:45
+			3:book_search.html 
+			  输入框中只要有一个输入,
+				则发起一个GET异步请求,
+				获取包含当前关键字书名列表
+      4:book_search_do.php
+			  a:获取用户输入关键字 css
+				b:查询数据库中所有包含css书名图书
+				c:拼一个html片段
+				  <li>css指南<li>
+					<li>css大全</li>
+       SELECT title FROM t_book
+       WHERE title like '%j%';

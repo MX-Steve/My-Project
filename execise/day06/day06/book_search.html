@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	  <h1>图片搜索</h1>
+	  <div>
+		<form action="#" method="post">
+		<input type="text" name="kw" id="kw" /><br/>
+		<ul id="suggest" style="display:none">
+<!-- 		  <li>css指南1</li> -->
+<!-- 		  <li>css指南2</li> -->
+<!-- 		  <li>css指南3</li> -->
+		</ul>
+		</div> 
+    </form>
+		<script>
+       //1:获取kw输入框绑定事件 onkeyup
+			 kw.onkeyup = function(){
+				 //2:如果用户没有输入内容,则隐藏列表
+         var kwv = this.value;
+				 if(!kwv){
+           suggest.style.display = "none";
+					 return;
+				 }
+				 //3:创建对象 xhr
+				 var xhr = new XMLHttpRequest();
+				 //4:绑定事件
+				 xhr.onreadystatechange=function(){
+				 //  如果状态码200 数据发送完成 4
+				 if(xhr.status===200&&
+				   xhr.readyState===4){
+          //接收图书列表
+					var html = xhr.responseText;
+          suggest.innerHTML = html;
+					suggest.style.display = "block";
+				 }
+				 
+				 }
+				 //5:打开连接
+				 var url = "book_search_do.php?kw="+kwv
+				 xhr.open('GET',url,true);
+				 //6:发送
+				 xhr.send(null);
+			 }
+		</script>
+	</body>
+</html>
