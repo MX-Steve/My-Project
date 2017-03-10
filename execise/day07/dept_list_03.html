@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jd-login</title>
+</head>
+<body>
+	<h1>部门列表</h1>
+	<table border="1" width="80%">
+		<thead>
+			<tr>
+				<td>部门编号</td>
+				<td>部门名称</td>
+			</tr>
+			<tbody id="tb1"></tbody>
+		</thead>
+	</table>
+	<script src="jq.js"></script>
+	<script>
+		$(function(){
+			$.get("dept_list_do_03.php",
+			function(data){
+				$("#tb1").html(data);
+			});
+		});
+	</script>
+</body>
+</html>

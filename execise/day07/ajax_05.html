@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax-do</title>
+</head>
+<body>
+	<h1>练习:ajax异步请求</h1>
+	<button id="btn">异步分割请求</button>
+	<script src="jq.js"></script>
+	<script>
+		$("#btn").click(function(){
+			$.ajax({
+				type:'POST',
+				url:'ajax_do_05.php',
+				data:{id:100},
+				beforeSend:function(xhr,request){
+					console.log("\n 1. before send ....");
+					console.log(arguments);
+				},
+				success:function(data,msg,xhr){
+					console.log("\n 2. success ....");
+					console.log(arguments);
+				},
+				error:function(xhr,msg,statusText){
+					console.log("\n 3. error ....");
+					console.log(arguments);
+				},
+				complete:function(xhr,msg){
+					console.log("\n 4. complete ....");
+					console.log(arguments);
+				}
+			});
+		});
+	</script>
+</body>
+</html>

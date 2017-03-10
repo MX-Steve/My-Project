@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>che</title>
+	<style>
+		body{
+			background:url(timg.jpg) no-repeat;
+			background-size:100%;
+		}
+		#tb1{
+			display:none;
+			width:100%;
+			border-color:orange;
+		}
+		#tb1 thead{
+			background-color:#abcdef;
+			height:30px;
+			text-align:center;
+			font-size:24px;
+		}
+		#tb1 tbody{
+			background-color:#fff;
+		}
+	</style>
+</head>
+<body>
+	<h1 style="text-align:center">汽车大全</h1>
+	<select name="tid" id="tid" style="margin-left:45%;margin-bottom:30px;padding:5px 10px">
+		<option value="-1">--请选择--</option>
+		<option value="lt8">--8万以下--</option>
+		<option value="lt15">--15万以下--</option>
+		<option value="lt30">--30万以下--</option>
+		<option value="suv">--suv--</option>
+	</select>
+	<table border="1" id="tb1">
+		<thead>
+			<tr>
+				<td>序号</td>
+				<td>简称</td>
+				<td>全称</td>
+				<td>小图</td>
+				<td>大图</td>
+				<td>价格/万</td>
+				<td>类型</td>
+			</tr>
+		</thead>
+		<tbody id="menu"></tbody>
+	</table>
+	<script src="jq.js"></script>
+	<script>
+		$("#tid").change(function(){
+			var cartype=this.value;
+			$("#tb1").css("display","block");
+			$.ajax({
+				type:'POST',
+				url:'car_list_do_06.php',
+				data:{id:cartype},
+				success:function(data){
+					$("#menu").html(data);
+				}
+			});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>cake of cake_type</title>
+</head>
+<body>
+	<h1>蛋糕大全</h1>
+	<select name="tid" id="tid">
+		<option value="-1">--请选择--</option>
+		<option value="1">--鲜奶蛋糕--</option>
+		<option value="2">--水果蛋糕--</option>
+	</select>
+	<ul id="menu"></ul>
+	<script src="jq.js"></script>
+	<script>
+		$("#tid").change(function(){
+			//var ids=this.value;
+			//var data ={id:ids};
+			$.post('type_list_do_04.php',{id:this.value},
+			function(data){
+				$("#menu").html(data);
+			});
+		});
+	</script>
+</body>
+</html>

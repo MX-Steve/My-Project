@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jd-login</title>
+</head>
+<body>
+	<h1>用户登录</h1>
+	<form action="user_login_do_02.php" method="post" id="logForm">
+		姓名：<input type="text" name="uname" id="uname"><br />
+		密码：<input type="password" name="upwd" id="upwd"><br />
+		<input type="button" value="登录" id="btn">
+	</form>
+	<script src="jq.js"></script>
+	<script>
+		$("#btn").click(function(){
+			$.get("user_login_do_02.php?uname="+uname.value+"&upwd="+upwd.value,
+			function(data){
+				alert(data);
+			});
+		});
+	</script>
+</body>
+</html>

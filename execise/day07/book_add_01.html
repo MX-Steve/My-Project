@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+	<h1>添加图书</h1>
+	<form action="login_do.php" method="post" id="regForm">
+	书名<input type="text" name="title" id="title"><br/><br/>
+	作者<input type="text" name="author" id="author"><br/><br/>
+	<input type="button" id="btn" value="添加">
+	</form>
+	<script src="jq.js"></script>
+	<script>
+		$("#btn").click(function(){
+			$.get('book_add_do_01.php?title='+title.value+'&author='+author.value,
+			function(data){
+				alert(data);
+			});
+		});
+	</script>
+ </body>
+</html>
