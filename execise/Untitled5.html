@@ -4,12 +4,9 @@
 		<meta charset="utf-8">
 		<title></title>
 	</head>
-	<body>
-	<p id="p1">回复<a>10</a></p>
-	<input type="button" value="new button">
+	<body> <a>login</a> <div id="news"> <a>新闻标题1</a> <a class="current">新闻标题2</a> <a>新闻标题3</a> </div> 
 	<script>
-		var empAge = 20; var empName;
-		if( empAge >= 20 || empName.length > 0 ) console.log();
+		var div = document.querySelector('#news'); var aNodes = div.querySelectorAll('a'); console.log(aNodes.length); var node = div.querySelector('a.current'); console.log(node.innerHTML);
 	</script>
 	</body>
 </html>
