@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>food-list</title>
+</head>
+<body>
+	<h1>食物大全</h1>
+	<select id="sel">
+		<option value="-1">--请选择--</option>
+		<option value="fruit">--水果--</option>
+		<option value="drink">--饮料--</option>
+		<option value="bread">--面包--</option>
+	</select>
+	<table border="1" id="table" style="display:none;width:100%">
+		<thead>
+			<tr>
+				<td>序号</td>
+				<td>名称</td>
+				<td>图片</td>
+				<td>价格</td>
+				<td>分类</td>
+			</tr>
+		</thead>
+		<tbody id="tb1"></tbody>
+	</table>
+	<script src="jq.js"></script>
+	<script>
+		$("#sel").change(function(){
+			var foodtype=this.value;
+			if(foodtype==="-1"){
+				$("#table").css("display","none");
+			}else{
+				$("#table").css("display","block");
+			}
+			$.ajax({
+				type:'POST',
+				url:'food_list_do.php',
+				data:'id='+foodtype,
+				success:function(data){
+					$("#tb1").html(data);
+				}
+			});
+		});
+	</script>
+</body>
+</html>
