@@ -60,7 +60,7 @@
 	js  :js/js/productlist.js
 
 模块二:产品浏览分页处理
-功能分析:
+	功能分析:
   1:页面加载成功显示第一页商品列表
 	  一页8条记录
 	2:页面显示 1 2 [3] 4 5
@@ -72,14 +72,6 @@
 	php:jd/data/init.php
 	html:jd/productlist.html
 	js  :js/js/productlist.js
-
-	15:50---16:00 阅读代码
-
-	16:30--16:40  练习
-	16:40--16:50  休息
-	16:50--17:10  添加购物车
-
-
 模块三:添加购物车
   1:点击添加购物车按钮{添加成功返回:信息}
 	2:处理php
@@ -115,27 +107,14 @@
 
 
 模块四:查看购物车
-难题:productlist.html--->shoppingcart.html
-用户名
-用户编号
-方案1：?uname=qingdong&uid=10
-方案2: cookie 
-document.cookie = 'loginUname=qingdong';
-document.cookie = 'loginUid=10';
-location.href  = "shoppingcart.html";
+	难题:productlist.html--->shoppingcart.html
+	用户名
+	用户编号
+	方案1：?uname=qingdong&uid=10
+	方案2: cookie 
+	document.cookie = 'loginUname=qingdong';
+	document.cookie = 'loginUid=10';
+	location.href  = "shoppingcart.html";
 
-取数据cookie
-var cookieArray = document.cookie
-
-
-
-作业:
-1:添加购物车完善
-2:查看购物车
-3:查看购物车列表 (选) shoppingcart.html
-
-
-
-
-
-
+	取数据cookie
+	var cookieArray = document.cookie
