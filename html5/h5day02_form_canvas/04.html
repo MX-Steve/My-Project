@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form action="#">
+    age <input type="number" id="age"/>
+    email <input id="email" type="email" minlength="5" required name="email"/>
+    <input type="submit"/>
+</form>
+<script>
+    email. onblur =function(){
+        if(this.validity.valueMissing){
+            var msg1="用户邮箱格式不正确";
+            this.setCustomValidity(msg1);
+        }else if(this.validity.tooShort){
+            var msg2="长度不够";
+            this.setCustomValidity(msg2);
+        }else{
+            this.setCustomValidity("");
+        }
+    }
+      </script>
+</body>.
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>video-preload</title>
+    <style>
+       .container{
+            height:350px;
+            width:500px;
+           border:1px solid #aaa;
+           margin:50px;
+           padding:10px;
+            position:relative;
+           overflow:hidden;
+        }
+        #ad,#btplay{
+            display:block;
+            position:absolute;
+        }
+        #ad{
+            top:30px;
+            left:30px;
+        }
+        #btplay{
+            top:50%;
+            left:50%;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <video controls id="v1" src="vidio_audio/birds.mp4" width="500px" height="350px"
+            preload="metadata"></video>
+    <!--<img id="ad" src="vidio_audio/1.png" alt="" height="330px" width="480px"/>-->
+    <a href="#" id="btplay"><img src="vidio_audio/play.png"></a>
+</div>
+<script>
+    btplay.onclick=function(e){
+        e.preventDefault();
+        if(v1.paused==true){
+            v1.play();
+            this.firstElementChild.src="vidio_audio/pause.png";
+        }else{
+            v1.pause();
+            this.firstElementChild.src="vidio_audio/play.png";
+        }
+
+    }
+    var con=document.getElementsByClassName("container");
+    con.onmouseenter=function() {
+        btplay.style.display = "block";
+    }
+    con.onmouseleave=function(){
+        btplay.style.display="none";
+    }
+    v1.onpause=function(){
+        ad.style.display="block";
+    }
+    v1.onplay=function(){
+        ad.style.display="none";
+    }
+</script>
+</body>
+</html>

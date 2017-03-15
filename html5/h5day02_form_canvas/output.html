@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>output</title>
+</head>
+<body>
+<form action="#">
+    商品单价￥<span id="price">3.5</span>
+    购买数量 <input type="number" id="count" min="1" max="99" value="1"/>
+    小计 ￥ <output id="subtotal">3.5</output>
+</form>
+<script>
+    count.onchange=function(){
+        var c=this.value;
+        subtotal.innerHTML= price.innerHTML*c;
+    }
+</script>
+</body>
+</html>

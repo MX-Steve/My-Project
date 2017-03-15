@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>video ex</title>
+    <style>
+        #d1{
+            height:350px;
+            width:500px;
+            position:relative;
+        }
+        #btplay,#btpause{
+            display:none;
+            position:absolute;
+            left:250px;
+            top:175px;
+        }
+    </style>
+</head>
+<body>
+<video id="v1" src="vidio_audio/birds.mp4" controls></video>
+<button id="btn1">开始</button>
+<button id="btn2">暂停</button>
+<script>
+    v1.onpause =function(){
+        console.log("暂停");
+    }
+    v1.onplay=function(){
+        console.log("开始播放");
+    }
+    btn1.onclick=function(){
+        v1.play();
+    }
+    btn2.onclick=function(){
+        v1.pause();
+    }
+
+</script>
+</body>
+</html>
