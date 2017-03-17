@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <canvas id="c1"></canvas>
+    <script>
+        var progress=0;
+        var imgBg = new Image();
+        imgBg.src="img/bg.jpg";
+        imgBg.onload=function(){
+            progress += 25;
+            if(progress == 100){
+                startDraw();
+            }
+        };
+        var imgDisc = new Image();
+        imgDisc.src="img/disc.png";
+        imgDisc.onload = function(){
+            progress += 25;
+            if(progress == 100){
+                startDraw();
+            }
+        };
+        var imgPause = new Image();
+        imgPause.src = "img/pause.png";
+        imgPause.onload = function(){
+            progress += 25;
+            if(progress == 100){
+                startDraw();
+            }
+        };
+        var imgPlay = new Image();
+        imgPlay.src = "img/play.png";
+        imgPlay.onload = function(){
+            progress += 25;
+            if(progress == 100){
+                startDraw();
+            }
+        };
+        function startDraw(){
+            console.log("123");
+            var ctx = c1.getContext("2d");
+            var w = imgBg.width;
+            var h = imgBg.height;
+            c1.width = w;
+            c1.height = h;
+            ctx.drawImage(imgBg,0,0);
+            ctx.arc(w/2,h/2,130,0,2*Math.PI);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.drawImage(imgDisc,w/2-imgDisc.width,
+                    h/2-imgDisc.height,2*imgDisc.width,2*imgDisc.height);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.drawImage(imgPlay,w-imgPlay.width,h-imgPlay.height/3-20,
+                    1/3*imgPlay.width,1/3*imgPlay.height);
+            ctx.beginPath();
+            ctx.drawImage(imgPause,w-imgPause.width,h-imgPause.height/3-20,
+                    1/3*imgPause.width,1/3*imgPause.height);
+        }
+
+    </script>
+</body>
+</html>
