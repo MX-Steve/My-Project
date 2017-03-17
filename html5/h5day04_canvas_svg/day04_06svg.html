@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h3>svg的绘图_矩形</h3>
+    <svg width="600" height="400" style="border:5px solid #ddd;border-radius:10%">
+        <rect id="r1" width="100" height="100" x="0" opacity="1" y="0" fill="yellow" >
+        </rect>
+    </svg>
+    <script>
+        var step=5;
+        var timer = setInterval(function(){
+            var x=r1.getAttribute('x');
+            var o=r1.getAttribute('opacity');
+            x = parseInt(x);
+            x += step;
+            o = parseFloat(o);
+            o -=0.015;
+            r1.setAttribute("opacity",o);
+            r1.setAttribute("x",x);
+            if(x>=300){
+//                clearInterval(timer);
+                step = -5;
+            }else if(x<50){
+                step = 5;
+            }
+        },100)
+    </script>
+</body>
+</html>

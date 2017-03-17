@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            text-align:center;
+        }
+        svg{
+            background-color:#aaa;
+        }
+        #r4{
+            fill:#f00;
+            stroke-width: 6px;
+            stroke: #900;
+            fill-opacity: .5;
+        }
+    </style>
+</head>
+<body>
+    <h3>svg的绘图_矩形</h3>
+    <svg width="600" height="400">
+        <rect width="100" height="100" fill="#030303" fill-opacity="1"
+              stroke-width="5" stroke="#f00" ></rect>
+        <rect width="100" height="100" x="500" y="0" fill="#oof"></rect>
+        <rect width="100" height="100" x="0" y="300" fill="blue" id="r3"></rect>
+        <rect height="100" width="100" x="500" y="300" id="r4"></rect>
+    </svg>
+    <script>
+        r3.onmouseover=function(){
+            r3.setAttribute('fill','rgba(255,55,0,0.5)');
+        };
+        r3.onmouseout=function(){
+            r3.setAttribute('fill','white');
+        }
+    </script>
+</body>
+</html>

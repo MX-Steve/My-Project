@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h3>svg的绘图_矩形</h3>
+    <svg width="600" height="400" style="border:5px solid #ddd">
+        <rect width="100" height="100" opacity="1" x="100" y="55" fill="yellow"></rect>
+        <rect width="100" height="100" opacity="1" x="100" y="165" fill="blue"></rect>
+        <rect width="100" height="100" opacity="1" x="100" y="275" fill="red"></rect>
+    </svg>
+    <script>
+        var rs = document.querySelectorAll("rect");
+        for(var i=0;i<rs.length;i++){
+            rs[i].onclick=function(){
+                var rThis = this;
+                var timer = setInterval(function(){
+                    var h=rThis.getAttribute('height');
+                    var w=rThis.getAttribute("width");
+                    var o=rThis.getAttribute("opacity");
+                    h = parseFloat(h);
+                    w = parseFloat(w);
+                    o = parseFloat(o);
+                    h +=2;
+                    w +=10;
+                    o -=0.1;
+                    rThis.setAttribute('height',h);
+                    rThis.setAttribute('width',w);
+                    rThis.setAttribute('opacity',o);
+                    if(o<0){
+//                        rThis.parentNode.removeChild(rThis);
+                        rThis.remove(rThis);
+                    }
+
+                },200)
+            }
+        }
+    </script>
+</body>
+</html>
